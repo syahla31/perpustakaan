@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="buku_view_tree" model="ir.ui.view">
+            <field name="name">buku.view.tree</field>
+            <field name="model">data.buku</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="id" />
+                    <field name="cover" widget="image" width="100px" height="100px" class="oe_avatar"/>
+                    <field name="name" />
+                    <field name="penulis" />
+                    <field name="penerbit" />
+                    <field name="tahun_terbit" />
+                    <field name="tersedia" />
+                    <field name="peminjaman_ids" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="buku_form" model="ir.ui.view">
+            <field name="name">buku.form</field>
+            <field name="model">data.buku</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Data Buku">
+                                <field name="id" />
+                                <field name="name" />
+                                <field name="penulis" />
+                                <field name="penerbit" />
+                                <field name="tahun_terbit" />
+                                <field name="tersedia" />
+                                <field name="deskripsi" />
+                            </group>
+                            <group>
+                                <field name="cover" widget="image" width="230px" height="230px" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Peminjaman">
+                                <field name="peminjaman_ids">
+                                    <tree>
+                                        <field name="id" />
+                                        <field name="name" />
+                                        <field name="buku_id" />
+                                        <field name="tgl_pem" />
+                                        <field name="tgl_pen" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- model.name search view -->
+        <record id="buku_view_search" model="ir.ui.view">
+            <field name="name">buku.view.search</field>
+            <field name="model">data.buku</field>
+            <field name="arch" type="xml">
+                <search string="Search Buku">
+                    <field name="name" />
+                    <field name="penulis" />
+                    <field name="penerbit" />
+
+                    <filter string="Benteng Pustaka"
+                        name="benteng_pustaka"
+                        domain="[('penerbit','ilike','benteng')]"/>
+                    <filter string="Gramedia"
+                        name="gramedia"
+                        domain="[('penerbit','ilike','gramedia')]"/>
+                    <filter string="Gagas Media"
+                        name="gagas_media"
+                        domain="[('penerbit','ilike','gagas')]"/>
+                    <filter string="Republika"
+                        name="republika"
+                        domain="[('penerbit','ilike','republika')]"/>
+                    
+                </search>
+            </field>
+        </record>
+
+        <record id="buku_view_pie_chart" model="ir.ui.view">
+            <field name="name">Buku - Grafik Pie Peminjaman</field>
+            <field name="model">data.buku</field>
+            <field name="arch" type="xml">
+                <graph string="Peminjaman Buku (Total)" type="pie">
+                    <field name="name"/>
+                    <field name="peminjaman_count" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record id="data_buku_pie_chart_action" model="ir.actions.act_window">
+            <field name="name">Grafik Peminjaman Buku (Pie Chart)</field>
+            <field name="res_model">data.buku</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="buku_view_pie_chart"/>
+        </record>
+
+        <record id="data_buku_action" model="ir.actions.act_window">
+            <field name="name">Data Buku</field>
+            <field name="res_model">data.buku</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <report
+            id="action_report_buku"
+            model="data.buku"
+            string="Buku Report"
+            report_type="qweb-pdf"
+            name="perpustakaan.report_buku"
+            file="perpustakaan.report_buku"
+        />
+
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem 
+            id="perpus_menu_root" 
+            name="Sistem Perpustakaan" 
+            sequence="100"
+            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
+
+        <menuitem
+            id="buku_menu"
+            name="Data Buku"
+            action="data_buku_action"
+            parent="perpus_menu_root"
+            sequence="1"/>
+
+    </data>
+</odoo>

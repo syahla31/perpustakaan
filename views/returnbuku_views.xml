@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+    
+        <record id="pengembalian_tree" model="ir.ui.view">
+            <field name="name">pengembalian.tree</field>
+            <field name="model">data.returnbuku</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="tgl_pen" />
+                    <field name="petugas_id" />
+                    <field name="denda" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="pengembalian_form" model="ir.ui.view">
+            <field name="name">pengembalian.form</field>
+            <field name="model">data.returnbuku</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group string="Data pengembalian">
+                            <field name="name" />
+                            <field name="tgl_pen" />
+                            <field name="petugas_id" />
+                            <field name="denda" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pengembalian_action" model="ir.actions.act_window">
+            <field name="name">Data Pengembalian</field>
+            <field name="res_model">data.returnbuku</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="perpus_menu_root" 
+            name="Sistem Perpustakaan" 
+            sequence="100"
+            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
+            
+        <menuitem 
+            id="pengembalian_menu" 
+            name="Data Pengembalian" 
+            parent="perpus_menu_root" 
+            action="pengembalian_action" 
+            sequence="5"/>
+    </data>
+    
+</odoo>

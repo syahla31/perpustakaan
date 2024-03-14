@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+    
+        <record id="petugas_view_tree" model="ir.ui.view">
+            <field name="name">petugas.view.tree</field>
+            <field name="model">data.petugas</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="id_p" />
+                    <field name="name" />
+                    <field name="jabatan" />
+                    <field name="no_HP" />
+                    <field name="alamat_p" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="petugas_form" model="ir.ui.view">
+            <field name="name">petugas.form</field>
+            <field name="model">data.petugas</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group string="Data Petugas">
+                            <field name="id_p" />
+                            <field name="name" />
+                            <field name="jabatan" />
+                            <field name="no_HP" />
+                            <field name="alamat_p" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="data_petugas_action" model="ir.actions.act_window">
+            <field name="name">Data Petugas</field>
+            <field name="res_model">data.petugas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="perpus_menu_root" 
+            name="Sistem Perpustakaan" 
+            sequence="100"
+            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
+        
+        <menuitem
+            id="petugas_menu"
+            name="Data Petugas"
+            action="data_petugas_action"
+            parent="perpus_menu_root"
+            sequence="3"/>
+        
+    </data>
+    
+</odoo>

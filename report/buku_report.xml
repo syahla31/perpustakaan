@@ -1,0 +1,130 @@
+<odoo>
+    <data>
+        <template id="header_session">
+            <div class="header">
+                <div class="row mt32 mb32">
+                    <div class="col-6">
+                        <!-- <img t-if="company.logo" t-att-src="'data:image/png;base64"
+                        style="max-height: 100px;" /> -->
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+        <!-- Report Template Body - Session -->
+
+        <template id="body_session">
+            <div class="page">
+                <div class="d-flex justify-content-center">
+                    <td>REPORT BUKU</td>
+                    <group string="string">
+                        <table class="table table-bordered" style="width:75%">
+                            <tbody>
+                                <tr>
+                                    <td
+                                        style="width: 25%; background-color: #960380; padding: 5px; color: white; font-weight: bold;">
+                                        Judul </td>
+                                    <td style="width: 75%; padding: 5px;">
+                                        <t t-esc="o.name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="width: 25%; background-color: #960380; padding: 5px; color: white; font-weight: bold;">
+                                        Penulis </td>
+                                    <td style="width: 75%; padding: 5px;">
+                                        <t t-esc="o.penulis" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="width: 25%; background-color: #960380; padding: 5px; color: white; font-weight: bold;">
+                                        Tahun Terbit </td>
+                                    <td style="width: 75%; padding: 5px;">
+                                        <t t-esc="o.tahun_terbit" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="width: 25%; background-color: #960380; padding: 5px; color: white; font-weight: bold;">
+                                        Deskripsi </td>
+                                    <td style="width: 75%; padding: 5px;">
+                                        <t t-esc="o.deskripsi" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" style="width:25%">
+                            <tbody>
+                                <tr>
+                                    <img t-if="o.cover"
+                                        t-att-src="'data:image/jpg;base64,' + o.cover.decode('utf-8')" />
+                                </tr>
+                            </tbody>
+                        </table>
+                    </group>
+                </div>
+                <div style="margin-left: auto; margin-right: auto;">
+                    <table class="table table-bordered mt-4" style="width:100%">
+                        <thead
+                            style="background-color:#960380;color:white;font-weight: bold;font-weight: bold;">
+                            <tr>
+                                <td class="text-center">ID</td>
+                                <td class="text-center">Nama Peminjam</td>
+                                <td class="text-center">Judul Buku</td>
+                                <td class="text-center">Tanggal Peminjaman</td>
+                                <td class="text-center">Tanggal Pengembalian</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.peminjaman_ids" t-as="line">
+                                <tr>
+                                    <td>
+                                        <t t-esc="line.id" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.name.name" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.buku_id.name" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.tgl_pem" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.tgl_pen" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+
+        <!-- Report Template - Session -->
+
+        <template id="report_buku">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div t-if="report_type == 'html'">
+                        <div>
+                            <t t-call="perpustakaan.header_session" />
+                        </div>
+                        <div style="margin-top:150px">
+                            <t t-call="perpustakaan.body_session" />
+                        </div>
+                    </div>
+                    <div t-else="">
+                        <t t-call="perpustakaan.header_session" />
+                        <t t-call="web.external_layout">
+                            <t t-call="perpustakaan.body_session" />
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

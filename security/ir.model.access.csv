@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acess_all_data_buku,all_data_buku,model_data_buku,,1,1,1,1
+acess_all_data_anggota,all_data_anggota,model_data_anggota,,1,1,1,1
+acess_all_data_petugas,all_data_petugas,model_data_petugas,,1,1,1,1
+acess_all_data_peminjaman,all_data_peminjaman,model_data_peminjaman,,1,1,1,1
+acess_all_data_returnbuku,all_data_returnbuku,model_data_returnbuku,,1,1,1,1
