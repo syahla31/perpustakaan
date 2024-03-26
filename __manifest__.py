@@ -20,22 +20,36 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'web', 'sale', 'board'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/dashboard.xml',
         'views/data_buku_views.xml',
         'views/data_anggota_views.xml',
         'views/data_petugas_views.xml',
         'views/peminjaman_views.xml',
         'views/returnbuku_views.xml',
         'report/buku_report.xml',
+        'views/menu_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+
+    'css': [
+        'static/src/css/my_module.css',
+    ],
+
+    'assets': {
+        'web.assets_backend': [
+            'perpustakaan/static/src/components/**/*.js',
+            'perpustakaan/static/src/components/**/*.xml',
+            'perpustakaan/static/src/components/**/*.scss',
+        ],
+    },
 }

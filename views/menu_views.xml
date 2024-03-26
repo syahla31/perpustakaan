@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem 
+            id="perpus_menu_root" 
+            name="Sistem Perpustakaan" 
+            sequence="100"
+            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
+
+        <menuitem
+            id="dashboard_menu"
+            name="Dashboard"
+            action="perpus_dashboard"
+            parent="perpus_menu_root"
+            sequence="1"/>
+
+        <menuitem
+            id="buku_menu"
+            name="Data Buku"
+            action="data_buku_action"
+            parent="perpus_menu_root"
+            sequence="2"/>
+
+        <menuitem
+            id="anggota_menu"
+            name="Data Anggota"
+            action="data_anggota_action"
+            parent="perpus_menu_root"
+            sequence="3"/>
+    
+        <menuitem
+            id="petugas_menu"
+            name="Data Petugas"
+            action="data_petugas_action"
+            parent="perpus_menu_root"
+            sequence="4"/>
+        
+        <menuitem 
+            id="peminjaman_menu" 
+            name="Data Peminjaman" 
+            parent="perpus_menu_root" 
+            action="peminjaman_action" 
+            sequence="5"/>    
+        
+        <menuitem 
+            id="pengembalian_menu" 
+            name="Data Pengembalian" 
+            parent="perpus_menu_root" 
+            action="pengembalian_action" 
+            sequence="6"/>
+    
+        
+    </data>
+</odoo>

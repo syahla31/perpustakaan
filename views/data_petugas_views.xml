@@ -41,19 +41,6 @@
             <field name="res_model">data.petugas</field>
             <field name="view_mode">tree,form</field>
         </record>
-
-        <menuitem 
-            id="perpus_menu_root" 
-            name="Sistem Perpustakaan" 
-            sequence="100"
-            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
-        
-        <menuitem
-            id="petugas_menu"
-            name="Data Petugas"
-            action="data_petugas_action"
-            parent="perpus_menu_root"
-            sequence="3"/>
         
     </data>
     

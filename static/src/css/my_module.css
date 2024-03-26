@@ -1,0 +1,16 @@
+.oe_avatar_form img {
+    height: 230px;
+    width: 230px;
+    object-fit: cover;
+}
+
+.oe_avatar_tree img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.o_custom_image_max {
+    max-width: 300px;
+    max-height: 300px; /* Opsional: tambahkan batasan tinggi jika diperlukan */
+}

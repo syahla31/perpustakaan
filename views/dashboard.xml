@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="act_data_buku" model="ir.actions.act_window">
+            <field name="name">Data Buku</field>
+            <field name="res_model">data.buku</field>
+            <field name="view_mode">kanban</field>
+        </record>
+        
+        <record id="act_data_anggota" model="ir.actions.act_window">
+            <field name="name">Data Anggota</field>
+            <field name="res_model">data.anggota</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="perpustakaan.anggota_kanban"/>
+        </record>
+        
+        <record id="act_data_peminjaman" model="ir.actions.act_window">
+            <field name="name">Data Buku</field>
+            <field name="res_model">data.buku</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="perpustakaan.buku_view_pie_chart"/>
+        </record>
+
+        <record id="act_data_peminjamans" model="ir.actions.act_window">
+            <field name="name">Data Peminjaman</field>
+            <field name="res_model">data.peminjaman</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="act_data_petugas" model="ir.actions.act_window">
+            <field name="name">Data Petugas</field>
+            <field name="res_model">data.petugas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="act_data_pengembalian" model="ir.actions.act_window">
+            <field name="name">Data Pengembalian</field>
+            <field name="res_model">data.returnbuku</field>
+            <field name="view_mode">tree,form</field>
+        </record>        
+
+        <record id="dashboard_form_view" model="ir.ui.view">
+            <field name="name">Dashboard Form</field>
+            <field name="model">board.board</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard">
+                    <board style="2-1">
+                        <column>
+                            <action
+                                string="Data Buku"
+                                name="%(perpustakaan.act_data_buku)d"/>
+                            <action
+                                string="Data Anggota"
+                                name="%(perpustakaan.act_data_anggota)d"/>
+                        </column>
+                        <column>
+                            <action
+                                string="Data Buku yang dipinjam"
+                                name="%(perpustakaan.act_data_peminjaman)d"/>
+                            <action
+                                string="Data Peminjaman Buku"
+                                name="%(perpustakaan.act_data_peminjamans)d"/>
+                            <action
+                                string="Data Petugas"
+                                name="%(perpustakaan.act_data_petugas)d"/>
+                            <action
+                                string="Data Pengembalian"
+                                name="%(perpustakaan.act_data_pengembalian)d"/>
+                        </column>
+
+                    </board>
+                </form>
+            </field>
+        </record>
+
+        <record id="perpus_dashboard" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="name">Dashboard</field>
+            <field name="view_id" ref="dashboard_form_view"/>
+        </record>
+    </data>
+</odoo>

@@ -39,19 +39,7 @@
             <field name="res_model">data.returnbuku</field>
             <field name="view_mode">tree,form</field>
         </record>
-
-        <menuitem 
-            id="perpus_menu_root" 
-            name="Sistem Perpustakaan" 
-            sequence="100"
-            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
-            
-        <menuitem 
-            id="pengembalian_menu" 
-            name="Data Pengembalian" 
-            parent="perpus_menu_root" 
-            action="pengembalian_action" 
-            sequence="5"/>
+        
     </data>
     
 </odoo>

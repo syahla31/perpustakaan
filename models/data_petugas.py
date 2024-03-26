@@ -11,6 +11,7 @@ class DataPetugas(models.Model):
     jabatan = fields.Selection(string='Jabatan', selection=[('pk', 'Pustakawan'), ('a_pk', 'Asisten Pustakawan'),('sf', 'Staff')])
     no_HP = fields.Char(string='No Handphone')
     alamat_p = fields.Text(string='Alamat')
+    library_id = fields.Many2one('data.library', string='Library')
     
     @api.constrains('no_HP')
     def _check_valid_input(self):

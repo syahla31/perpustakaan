@@ -9,6 +9,7 @@ class DataPengembalian(models.Model):
     tgl_pen = fields.Date(string='Tgl Pengembalian')
     denda = fields.Integer(string='Denda', compute='_compute_denda')
     name = fields.Many2one('data.peminjaman', string='Peminjaman')
+    library_id = fields.Many2one('data.library', string='Library')
     petugas_id = fields.Many2one(
         'data.petugas',
         string='Petugas',

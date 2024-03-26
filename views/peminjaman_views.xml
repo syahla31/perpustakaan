@@ -68,19 +68,6 @@
                 </search>
             </field>
         </record>
-        
-        <menuitem 
-            id="perpus_menu_root" 
-            name="Sistem Perpustakaan" 
-            sequence="100"
-            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
-
-        <menuitem 
-            id="peminjaman_menu" 
-            name="Data Peminjaman" 
-            parent="perpus_menu_root" 
-            action="peminjaman_action" 
-            sequence="4"/>
             
     </data>
     

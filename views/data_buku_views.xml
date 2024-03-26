@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="">
                     <field name="id" />
-                    <field name="cover" widget="image" width="100px" height="100px" class="oe_avatar"/>
+                    <field name="cover" widget="image" class="oe_avatar_tree" />
                     <field name="name" />
                     <field name="penulis" />
                     <field name="penerbit" />
@@ -37,7 +37,7 @@
                                 <field name="deskripsi" />
                             </group>
                             <group>
-                                <field name="cover" widget="image" width="230px" height="230px" />
+                                <field name="cover" widget="image" class="oe_avatar_form" />
                             </group>
                         </group>
                         <notebook>
@@ -94,8 +94,32 @@
                     <field name="peminjaman_count" type="measure"/>
                 </graph>
             </field>
+        </record>   
+        
+        <record id="buku_view_kanban" model="ir.ui.view">
+            <field name="name">buku.view.kanban</field>
+            <field name="model">data.buku</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_global_click">
+                                    <div class="o_kanban_image">
+                                        <field name="cover" widget="image" class="o_image_64_max"/>
+                                    </div>
+                                    <div class="oe_kanban_card_content">
+                                        <p><strong><field name="name"/></strong></p>
+                                        <p><strong>Penulis      : </strong><field name="penulis"/></p>
+                                        <p><strong>Tahun Terbit : </strong><field name="tahun_terbit"/></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
         </record>
-
 
         <record id="data_buku_pie_chart_action" model="ir.actions.act_window">
             <field name="name">Grafik Peminjaman Buku (Pie Chart)</field>
@@ -106,8 +130,9 @@
 
         <record id="data_buku_action" model="ir.actions.act_window">
             <field name="name">Data Buku</field>
+            <field name= "type">ir.actions.act_window</field>
             <field name="res_model">data.buku</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">kanban,form,graph</field>
         </record>
 
         <report
@@ -118,20 +143,6 @@
             name="perpustakaan.report_buku"
             file="perpustakaan.report_buku"
         />
-
-        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-        <menuitem 
-            id="perpus_menu_root" 
-            name="Sistem Perpustakaan" 
-            sequence="100"
-            web_icon="Sistem Perpustakaan,logo/odoo_icon.png"/>
-
-        <menuitem
-            id="buku_menu"
-            name="Data Buku"
-            action="data_buku_action"
-            parent="perpus_menu_root"
-            sequence="1"/>
-
+        
     </data>
 </odoo>

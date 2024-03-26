@@ -11,6 +11,7 @@ class DataAnggota(models.Model):
     no_telp = fields.Char(string='No Handphone')
     alamat = fields.Text(string='Alamat')
     foto = fields.Binary(string='Foto')
+    library_id = fields.Many2one('data.library', string='Library')
     
     @api.constrains('no_telp')
     def _check_valid_input(self):

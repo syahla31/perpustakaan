@@ -14,6 +14,7 @@ class DataPeminjaman(models.Model):
         required=True)
     
     name = fields.Many2one("data.anggota", string='Nama Anggota', required=True)
+    library_id = fields.Many2one('data.library', string='Library')
     
     @api.depends('tgl_pem')
     def _compute_tgl_pen(self):
